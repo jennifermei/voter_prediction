@@ -5,6 +5,18 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 def create_models(data):
+    '''
+    Creatse and trains Random Forest models to predict Democratic and Republican percentages
+
+    Args:
+    - data (df): df with training data
+    Returns:
+    - rf_dem (RandomForestRegressor): model for predicting Democratic percentage
+    - rf_rep (RandomForestRegressor): model for predicting Republican percentage
+    - scaler (StandardScaler): scaler used for feature normalization
+    '''
+
+    # define training features
     train_columns = ['Voter Turnout %', 'Median Age', 'Median income', 'Below poverty line %', 
                     'White (non Hispanic or Latino) %', 'Hispanic or Latino %', 'Black %', 'American Indian %', 'Asian %', 
                     'Less than HS %', 'HS grad %', 'Some college %', "Bachelor's degree %", "Graduate degree %",
@@ -42,19 +54,34 @@ def create_models(data):
 
     return rf_dem, rf_rep, scaler
 
+
 def predict_2020(data, rf_dem, rf_rep, scaler):    
+    '''
+    Predicts Democratic and Republican percentages from 2020 data with RF models
+
+    Args:
+    - data (df): df with 2020 data
+    - rf_dem (RandomForestRegressor): model for predicting Democratic percentage
+    - rf_rep (RandomForestRegressor): model for predicting Republican percentage
+    - scaler (StandardScaler): scaler used for feature normalization
+    Returns:
+    - result_df (df): predicted percentages and winners for 2020 
+    '''
+
+    # define training features
     train_columns = ['Voter Turnout %', 'Median Age', 'Median income', 'Below poverty line %', 
                     'White (non Hispanic or Latino) %', 'Hispanic or Latino %', 'Black %', 'American Indian %', 'Asian %', 
                     'Less than HS %', 'HS grad %', 'Some college %', "Bachelor's degree %", "Graduate degree %",
                     'Income under 25k %', 'Income 25k to 50k %', 'Income 50k to 75k %','Income above 75k %']
 
+    # test data from 2020
     test_data = data[data['Year'] == 2020].copy()
 
     # testing features, normalize
     X_test = test_data[train_columns].values
     X_test = scaler.transform(X_test)
 
-    # use trained models to predict on 2020 test data
+    # predict on 2020 test data
     predict_dem = rf_dem.predict(X_test)
     predict_dem = np.clip(predict_dem, 0, 100)
     predict_rep = rf_rep.predict(X_test)
@@ -81,10 +108,27 @@ def predict_2020(data, rf_dem, rf_rep, scaler):
     result_df.to_csv('predictions_2020.csv', index=False)
     return result_df
 
+
 def predict_user_cd(user_cd, rf_dem, rf_rep, scaler):
+    '''
+    Predicts Democratic and Republican percentages from user data with RF models
+
+    Args:
+    - user_cd (dict): user-provided demographic profile
+    - rf_dem (RandomForestRegressor): model for predicting Democratic percentage
+    - rf_rep (RandomForestRegressor): model for predicting Republican percentage
+    - scaler (StandardScaler): scaler used for feature normalization
+    Returns:
+    - float: predicted Democratic percentage
+    - float: predicted Republican percentage
+    - winner (str): predicted winner 
+    '''
+
+    # convert user data from dict to numpy array
     user_cd = np.array(user_cd).reshape(1, -1)
     user_cd = scaler.transform(user_cd)
 
+    # predict on user data
     predict_dem = rf_dem.predict(user_cd)
     predict_dem = np.clip(predict_dem, 0, 100)
     predict_rep = rf_rep.predict(user_cd)
@@ -99,6 +143,7 @@ def predict_user_cd(user_cd, rf_dem, rf_rep, scaler):
     predict_dem = np.round(predict_dem, 2)
     predict_rep = np.round(predict_rep, 2)
 
+    # determine predicted winner 
     if predict_dem > predict_rep:
         winner = "Democratic"
     else:
