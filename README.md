@@ -4,8 +4,8 @@
 
 - [Overview](#overview)
 - [Setup](#setup)
-- [Data and Resources](#dataandresources)
-- [Process and Code](#processandcode)
+- [Data and Resources](#data-and-resources)
+- [Process and Code](#process-and-code)
 
 ## Overview
 This project uses election data and community demographic data from 2014, 2016, and 2018 to predict how different congressional districts will vote in 2020. Determining the factors that contribute to how US citizens vote in elections is important for political scientists and political campaigns. This project uses machine learning to use the relationship between a congressional district’s demographic profile and how that district votes in U.S. House of Representatives elections. It focuses on racial makeup, education levels, and income, as well as some other factors.
