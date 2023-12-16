@@ -68,7 +68,7 @@ def mapping(predictions, state=None, district=None):
                                center={"lat": center_lat, "lon": center_lon},
                                opacity=0.7,
                                labels={'Dem Advantage': 'Predicted Dem Advantage %'},
-                               hover_data=['State', 'District', 'Predicted Winner', 'Predicted Democratic %', 'Predicted Republican %'],
+                               hover_data=['State', 'District', 'Winner', 'Predicted Winner', 'Predicted Democratic %', 'Predicted Republican %'],
                               )
     fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
     return fig

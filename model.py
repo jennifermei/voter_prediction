@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 
 def create_models(data):
     '''
-    Creatse and trains Random Forest models to predict Democratic and Republican percentages
+    Creates and trains Random Forest models to predict Democratic and Republican percentages
 
     Args:
     - data (df): df with training data

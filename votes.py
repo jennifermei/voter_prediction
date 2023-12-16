@@ -6,7 +6,7 @@ from functions import replace_if_not_number, get_url
 
 def get_votes():
     '''
-    Scrapes congressional election data from Wikipedia for many  years and states
+    Scrapes congressional election data from Wikipedia for years and states
 
     Returns:
     - all_data (df): retrieved election data

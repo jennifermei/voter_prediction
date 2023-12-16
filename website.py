@@ -20,8 +20,7 @@ def website():
     state_names = list(state_fips)
 
     # generate final data to predict on
-    #data = get_final_data()
-    data = pd.read_csv('final_data.csv')
+    data = get_final_data()
     data = data.dropna(axis=0)
 
     # create Random Forest models for election prediction
