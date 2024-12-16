@@ -23,7 +23,7 @@ def mapping(predictions, state=None, district=None):
     predictions['Dem Advantage'] = predictions['Predicted Democratic %'] - predictions['Predicted Republican %']
 
     # load geographic data via GeoJSON
-    file_path = 'gz_2010_us_500_11_5m.json'
+    file_path = 'data/gz_2010_us_500_11_5m.json'
     with open(file_path) as file:
         geo_data = json.load(file)
 

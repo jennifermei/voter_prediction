@@ -13,7 +13,7 @@ def gui_cd():
     sg.theme('DarkAmber')
     
     # load data from csv file created by get_final_data() in final_data.py
-    final_data = pd.read_csv('final_data.csv')
+    final_data = pd.read_csv('data/final_data.csv')
 
     # get medians for the data as default values
     medians = median(final_data)

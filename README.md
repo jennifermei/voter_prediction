@@ -16,9 +16,9 @@ The technical components I used are: web scraping, using an API call to handle m
 
 
 ## Setup
-All you need to run is `main.py`!
+All you need to run is `src/main.py`!
 
-If you clone the repository, you can replicate my results by running `main.py`. You do not need to run anything else, as all the functions are packaged in such a way that you only need to run the one program. It may take a little bit for the website to show up as `main.py` also has to scrape data, use API calls, create and train models, and make predictions in addition to creating a website. It takes me about five minutes for the website to be created, and it may take shorter or longer depending on your computer. When all the data has been processed and the models have been created, a tab will automatically open in your browser and you will be able to use the website. The `csv` files will be overwritten when you run the program (with identical/very similar data).
+If you clone the repository, you can replicate my results by running `src/main.py`. You do not need to run anything else, as all the functions are packaged in such a way that you only need to run the one program. It may take a little bit for the website to show up as `src/main.py` also has to scrape data, use API calls, create and train models, and make predictions in addition to creating a website. It takes me about five minutes for the website to be created, and it may take shorter or longer depending on your computer. When all the data has been processed and the models have been created, a tab will automatically open in your browser and you will be able to use the website. The `csv` files will be overwritten when you run the program (with identical/very similar data).
 
 Python Version: 3.10.13
 See `requirements.txt` for what packages/libraries you need to have installed.
@@ -28,7 +28,7 @@ See `requirements.txt` for what packages/libraries you need to have installed.
 git clone https://github.com/jennifermei/voter_prediction.git
 cd voter_prediction     # or your file path
 pip install -r requirements.txt
-python main.py
+python src/main.py
 ```
 
 ## Data and Resources
@@ -39,7 +39,7 @@ Data for the project are drawn from publicly available sources, including:
 - [United States Census Bureau](https://www.census.gov/programs-surveys/acs/data/data-via-api.html): Census Bureau's API for accessing ACS data. Thank you to the Census Bureau!
 
 ## Process and Code
-The data were ultimately combined into a single data file for a row for each congressional district in each year, and columns representing different election results and demographic features. To predict election results in 2020, I created a random forest model (which did not perform too well, but that's okay!). Generally, I focused on racial makeup, education level, income, voter turnout, median age, election predictions, and geographic data. For more details on the demographic data, refer to the dictionary of ACS codes in `dicts.py`, which has all the factors of note listed. 
+The data were ultimately combined into a single data file for a row for each congressional district in each year, and columns representing different election results and demographic features. To predict election results in 2020, I created a random forest model (which did not perform too well, but that's okay!). Generally, I focused on racial makeup, education level, income, voter turnout, median age, election predictions, and geographic data. For more details on the demographic data, refer to the dictionary of ACS codes in `src/dicts.py`, which has all the factors of note listed. 
 
 Code for the project is organized as such:
 - [functions.py](https://github.com/jennifermei/voter_prediction/blob/main/functions.py) and [dicts.py](https://github.com/jennifermei/voter_prediction/blob/main/dicts.py) for ease of access 

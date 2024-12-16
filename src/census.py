@@ -58,5 +58,5 @@ def get_census():
     inv_map = {v: k for k, v in variables.items()}
     all_data.rename(columns=inv_map, inplace=True)
 
-    all_data.to_csv("census.csv", index=False)
+    all_data.to_csv("data/census.csv", index=False)
     return all_data

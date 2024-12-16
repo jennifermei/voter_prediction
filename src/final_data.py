@@ -65,7 +65,7 @@ def get_final_data():
     df_data = df_data[~remove_pa19]
     df_data = df_data[~remove_ca44]
 
-    df_data.to_csv('number_data.csv', index=False)
+    df_data.to_csv('data/number_data.csv', index=False)
 
     #######################################
 
@@ -116,5 +116,5 @@ def get_final_data():
                            'Voter Turnout %']
     df_final = df_final[first_columns_final + [col for col in df_final.columns if col not in first_columns_final]]
 
-    df_final.to_csv('final_data.csv', index=False)
+    df_final.to_csv('data/final_data.csv', index=False)
     return df_final

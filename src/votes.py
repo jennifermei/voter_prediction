@@ -186,5 +186,5 @@ def get_votes():
     all_data['Total Votes'] = all_data['Total Votes'].astype(int)
     all_data['Year'] = all_data['Year'].astype(int)
     
-    all_data.to_csv("votes.csv", index=False)
+    all_data.to_csv("data/votes.csv", index=False)
     return all_data
